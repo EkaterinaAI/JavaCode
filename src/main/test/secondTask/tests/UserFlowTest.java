@@ -72,7 +72,7 @@ public class UserFlowTest {
                 .mapToInt(price -> Integer.parseInt(price.replaceAll("[^\\d]", "")))
                 .sum();
         int actualTotal = cartPage.getTotalPrice();
-        //assertEquals(expectedTotal, actualTotal, "Общая цена в корзине не совпадает с ожидаемой суммой");
+        assertEquals(expectedTotal, actualTotal, "Общая цена в корзине не совпадает с ожидаемой суммой");
 
         // 6-7. Оформляем заказ и проверяем данные в итоговом сообщении
         String confirmation = cartPage.getOrder(

@@ -4,6 +4,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.Test;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -41,7 +42,7 @@ public class UserUpdateTest extends BaseTest{
 
         // Проверяем, что разница между текущей датой и датой обновления минимальна
         assertTrue(
-                Math.abs(currentDateTime.minusSeconds(updatedDateTime.getSecond()).getSecond()) <= 10,
+                Math.abs(Duration.between(updatedDateTime, currentDateTime).getSeconds()) <= 10,
                 "Дата обновления слишком отличается от текущей даты"
         );
     }
